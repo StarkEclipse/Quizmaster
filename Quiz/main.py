@@ -1,5 +1,6 @@
 import pgzrun
-
+import os
+os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 TITLE = "Quiz Master"
 WIDTH = 870
@@ -37,7 +38,10 @@ def draw():
     for i in answerboxes:
         screen.draw.filled_rect(i, "white")
 
-    screen.draw.textbox("Welcome to QuizMaster", mbox1, color = "white")
+    if question_index == 1:
+        screen.draw.textbox("Welcome to QuizMaster", mbox1, color="white")
+    else:
+        screen.draw.textbox(f"Score: {score}", mbox1, color="white")
     screen.draw.textbox("Skip", sbox, color = "white", angle = -90)
     screen.draw.textbox(str(timeleft), tbox, color = "white")
     screen.draw.textbox(qu[0], qbox, color = "white")
